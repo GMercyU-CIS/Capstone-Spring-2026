@@ -1,0 +1,207 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Types of Attacks — CyberThreats</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inconsolata:wght@300;400;500&display=swap');
+:root{
+  --bg:#0e0e0e;
+  --surface:#161616;
+  --surface2:#1e1e1e;
+  --border:#2a2a2a;
+  --text:#e8e8e8;
+  --muted:#6b6b6b;
+  --soft:#9a9a9a;
+  --red:#e8392a;
+  --red-dim:#7a1a10;
+  --red-glow:rgba(232,57,42,0.12);
+  --white:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inconsolata',monospace;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;overflow-x:hidden;font-size:15px}
+
+/* HEADER */
+.site-header{background:var(--bg);border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:100}
+.header-inner{max-width:1080px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;letter-spacing:0.04em;text-decoration:none;color:var(--white);display:flex;align-items:center;gap:10px}
+.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;flex-shrink:0}
+nav{display:flex;gap:2px}
+nav a{font-family:'Inconsolata',monospace;font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:6px 14px;border-radius:2px;transition:color 0.18s,background 0.18s}
+nav a:hover{color:var(--text);background:var(--surface)}
+nav a.active{color:var(--white);background:var(--surface2)}
+
+/* CONTAINER */
+.container{max-width:1080px;margin:0 auto;padding:0 32px}
+
+/* HERO */
+.hero{padding:72px 0 48px;border-bottom:1px solid var(--border);margin-bottom:56px}
+.hero-tag{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--red);display:inline-block}
+.hero h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.2rem,5vw,4rem);color:var(--white);line-height:1.08;letter-spacing:-0.02em;margin-bottom:20px}
+.hero h2 em{font-style:normal;color:var(--red)}
+.hero p{color:var(--soft);font-size:0.95rem;max-width:520px;line-height:1.85}
+
+/* SECTION HEADING */
+.section-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
+.section-head h3{font-family:'Syne',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+.section-head::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* HISTORY ENTRIES */
+.history-entry{display:grid;grid-template-columns:140px 1fr;gap:32px;padding:36px 0;border-bottom:1px solid var(--border)}
+.he-era{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);padding-top:4px}
+.he-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;color:var(--white);margin-bottom:12px;letter-spacing:-0.01em}
+.he-body{color:var(--soft);font-size:0.9rem;line-height:1.85}
+.he-image{width:100%;margin:20px 0 0;border:1px solid var(--border);display:block;filter:brightness(0.65) contrast(1.1)}
+
+/* ATTACK GRID */
+.attack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:56px}
+.attack-card{background:var(--bg);padding:28px 24px;transition:background 0.18s;text-decoration:none;display:block;position:relative}
+.attack-card:hover{background:var(--surface)}
+.ac-index{font-size:0.68rem;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px;display:block}
+.ac-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;color:var(--white);margin-bottom:8px;letter-spacing:-0.01em}
+.ac-desc{font-size:0.82rem;color:var(--soft);line-height:1.65}
+.ac-arrow{position:absolute;bottom:20px;right:20px;color:var(--red);font-size:0.9rem;opacity:0;transform:translateX(-6px);transition:all 0.2s}
+.attack-card:hover .ac-arrow{opacity:1;transform:none}
+.attack-card.span2{grid-column:span 2}
+
+/* DETAIL SECTIONS */
+.attack-detail{border-top:1px solid var(--border);padding:40px 0;scroll-margin-top:80px}
+.detail-header{display:grid;grid-template-columns:48px 1fr auto;gap:20px;align-items:start;margin-bottom:24px}
+.detail-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--border);line-height:1}
+.detail-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.4rem;color:var(--white);letter-spacing:-0.01em}
+.detail-cat{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);border:1px solid var(--red-dim);padding:4px 10px;white-space:nowrap;margin-top:6px}
+.detail-body p{color:var(--soft);font-size:0.9rem;line-height:1.85;margin-bottom:20px}
+.detail-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:8px}
+.detail-col h4{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.detail-col ul{list-style:none;padding:0}
+.detail-col ul li{color:var(--soft);font-size:0.85rem;padding:6px 0 6px 16px;position:relative;line-height:1.55;border-bottom:1px solid rgba(255,255,255,0.03)}
+.detail-col ul li::before{content:'—';position:absolute;left:0;color:var(--red);font-size:0.7rem;top:8px}
+
+/* DEVICE CARDS */
+.device-list{display:flex;flex-direction:column;gap:1px;background:var(--border);margin-bottom:56px}
+.device-item{background:var(--bg);padding:32px;display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;transition:background 0.18s}
+.device-item:hover{background:var(--surface)}
+.di-left{}
+.di-icon-name{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.di-icon{font-size:1.5rem;line-height:1}
+.di-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;color:var(--white);letter-spacing:-0.01em}
+.di-tag{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;padding-left:0}
+.di-desc{color:var(--soft);font-size:0.88rem;line-height:1.82}
+.di-right{}
+.di-attacks-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.di-pills{display:flex;flex-direction:column;gap:6px}
+.di-pill{font-size:0.76rem;color:var(--soft);padding:7px 12px;border:1px solid var(--border);background:var(--surface);letter-spacing:0.02em;transition:border-color 0.18s,color 0.18s}
+.device-item:hover .di-pill{border-color:var(--red-dim);color:var(--text)}
+.di-video{margin-top:20px;border-top:1px solid var(--border);padding-top:16px}
+.di-video-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.di-video-box{border:1px dashed var(--border);padding:20px;text-align:center;color:var(--muted);font-size:0.8rem;display:flex;align-items:center;justify-content:center;gap:10px}
+.di-play{color:var(--red);font-size:1rem}
+
+/* TIER LIST */
+.protect-note{padding:28px 32px;background:var(--surface);border-left:3px solid var(--red);margin-bottom:48px}
+.protect-note p{color:var(--soft);font-size:0.9rem;line-height:1.85}
+.tier-row{display:grid;grid-template-columns:120px 1fr;gap:0;margin-bottom:1px;background:var(--border)}
+.tier-label{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 12px;background:var(--surface);text-align:center;gap:4px}
+.tier-label .tl-rank{font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;line-height:1}
+.tier-label .tl-name{font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+.tier-t1 .tl-rank{color:#4ade80}.tier-t2 .tl-rank{color:#a3e635}.tier-t3 .tl-rank{color:#facc15}.tier-t4 .tl-rank{color:#fb923c}.tier-t5 .tl-rank{color:var(--red)}
+.tier-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--border)}
+.tier-item{background:var(--bg);padding:18px 20px;transition:background 0.15s}
+.tier-item:hover{background:var(--surface)}
+.ti-name{font-family:'Syne',sans-serif;font-weight:600;font-size:0.82rem;color:var(--text);margin-bottom:5px;letter-spacing:0.01em}
+.ti-desc{font-size:0.78rem;color:var(--muted);line-height:1.55}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(--border);padding:32px 0;margin-top:80px}
+.footer-inner{max-width:1080px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+.footer-text{font-size:0.75rem;color:var(--muted);letter-spacing:0.06em}
+.btn-back{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.18s}
+.btn-back:hover{color:var(--white)}
+
+/* FADE IN */
+.fade{opacity:0;transform:translateY(12px);animation:fi 0.5s ease forwards}
+@keyframes fi{to{opacity:1;transform:none}}
+.fade:nth-child(1){animation-delay:.04s}.fade:nth-child(2){animation-delay:.1s}.fade:nth-child(3){animation-delay:.16s}.fade:nth-child(4){animation-delay:.22s}.fade:nth-child(5){animation-delay:.28s}.fade:nth-child(6){animation-delay:.34s}.fade:nth-child(7){animation-delay:.40s}.fade:nth-child(8){animation-delay:.46s}.fade:nth-child(9){animation-delay:.52s}
+
+@media(max-width:800px){
+  .header-inner{flex-wrap:wrap;gap:10px;padding:14px 20px}
+  nav{flex-wrap:wrap}
+  .container{padding:0 20px}
+  .attack-grid{grid-template-columns:1fr 1fr}
+  .attack-card.span2{grid-column:1}
+  .device-item{grid-template-columns:1fr}
+  .tier-row{grid-template-columns:80px 1fr}
+  .detail-cols{grid-template-columns:1fr}
+  .history-entry{grid-template-columns:1fr}
+  .he-era{margin-bottom:8px}
+  .hero h2{font-size:2rem}
+  .footer-inner{flex-direction:column;gap:12px;text-align:center}
+}
+@media(max-width:500px){.attack-grid{grid-template-columns:1fr}}
+</style></head><body>
+<header class="site-header"><div class="header-inner">
+  <a href="index.html" class="logo"><span class="logo-dot"></span>CyberThreats</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="toa.html" class="active">Attacks</a>
+    <a href="devices.html">Devices</a>
+    <a href="protect.html">Protection</a>
+  </nav>
+</div></header>
+
+<main class="container">
+  <section class="hero fade">
+    <div class="hero-tag">Threat Catalog — 9 Entries</div>
+    <h2>Types of<br><em>Attacks</em></h2>
+    <p>Common attack vectors used by threat actors — from wireless interception to human manipulation. Select any entry for a full breakdown.</p>
+  </section>
+
+  <div class="section-head"><h3>Attack Index</h3></div>
+  <div class="attack-grid">
+    <a class="attack-card fade" href="#AI"><span class="ac-index">01</span><div class="ac-title">Artificial Intelligence</div><p class="ac-desc">AI-generated phishing, deepfakes, and automated exploitation lowering the skill bar for sophisticated attacks.</p><span class="ac-arrow">↓</span></a>
+    <a class="attack-card fade" href="#CC"><span class="ac-index">02</span><div class="ac-title">Covert Cables</div><p class="ac-desc">Malicious cables identical to normal ones, silently executing payloads the moment they're plugged in.</p><span class="ac-arrow">↓</span></a>
+    <a class="attack-card fade" href="#WA"><span class="ac-index">03</span><div class="ac-title">WiFi Attacks</div><p class="ac-desc">Rogue access points, credential capture, handshake cracking, and traffic interception across wireless networks.</p><span class="ac-arrow">↓</span></a>
+    <a class="attack-card fade" href="#MITM"><span class="ac-index">04</span><div class="ac-title">Man-in-the-Middle</div><p class="ac-desc">Silently inserting between two parties to eavesdrop or alter data in real time without detection.</p><span class="ac-arrow">↓</span></a>
+    <a class="attack-card fade" href="#EP"><span class="ac-index">05</span><div class="ac-title">Evil Portal</div><p class="ac-desc">Fake captive portal pages via rogue hotspots — harvesting credentials when victims attempt to connect.</p><span class="ac-arrow">↓</span></a>
+    <a class="attack-card fade" href="#DA"><span class="ac-index">06</span><div class="ac-title">Deauth Attack</div><p class="ac-desc">Flooding networks with forged 802.11 deauthentication frames to knock devices offline or capture handshakes.</p><span class="ac-arrow">↓</span></a>
+    <a class="attack-card fade" href="#FS"><span class="ac-index">07</span><div class="ac-title">Fishy Software</div><p class="ac-desc">Trojans, RATs, and malicious apps disguised as legitimate software — compromising devices from within.</p><span class="ac-arrow">↓</span></a>
+    <a class="attack-card fade" href="#SE"><span class="ac-index">08</span><div class="ac-title">Social Engineering</div><p class="ac-desc">Exploiting human psychology through deception, pretexting, and manipulation rather than technical exploits.</p><span class="ac-arrow">↓</span></a>
+    <a class="attack-card span2 fade" href="#KL"><span class="ac-index">09</span><div class="ac-title">Key Logger</div><p class="ac-desc">Hardware or software recording every keystroke — silently exfiltrating passwords, messages, and sensitive data.</p><span class="ac-arrow">↓</span></a>
+  </div>
+
+  <div class="section-head"><h3>Detailed Breakdowns</h3></div>
+
+  <div class="attack-detail" id="AI"><div class="detail-header"><div class="detail-num">01</div><div><div class="detail-title">Artificial Intelligence</div></div><div class="detail-cat">Emerging Threats</div></div><div class="detail-body"><p>Cybercriminals can utilize artificial intelligence (AI) in order to enhance their attacks by making them more efficient, potent, and automatic. AI-powered attacks are capable of adapting on their own in ways that no other kind of attack can, which makes them particularly difficult to deal with. AI attacks will collect personal data on victims and target those who are deemed high-value or could allow for access to high-value targets. The combination of automating, adapting, data gathering, and targeting makes AI-powered attacks dangerous in ways that make many defense methods irrelevant. Types of AI attacks include AI social engineering attacks, AI phishing attacks, and deep-fake attacks. Ways to prevent AI attacks include developing incident response plans, training employees on the risks of AI attacks, and using AI itself to defend your network from attacks.</p><div class="detail-cols"><div class="detail-col"><h4>Common Indicators</h4><ul><li>Fluent, targeted phishing with zero spelling errors</li><li>Phone calls from "known" voices making urgent requests</li><li>Video calls that look slightly off or unnatural</li></ul></div><div class="detail-col"><h4>Mitigations</h4><ul><li>Establish out-of-band verification codes for sensitive requests</li><li>Train staff to recognize AI-generated content patterns</li><li>Use MFA so credential theft alone is not enough</li></ul></div></div></div></div>
+
+  <div class="attack-detail" id="CC"><div class="detail-header"><div class="detail-num">02</div><div><div class="detail-title">Covert Cables</div></div><div class="detail-cat">Hardware / HID</div></div><div class="detail-body"><p>Covert cables are cables that are meant to sneakily attack victims. One example of this would be fiber-optic cables that have been altered to be capable of detecting sound waves in order to listen to people. The cables capture the soundwaves, and cybercriminals can use Distributed Acoustic Sensing technology to recreate the original sound, which can be anything from a chirping bird to sensitive and private human conversations. Another example would be normal USB cables that transfer malicious data into whatever they are plugged in to. On the outside, these cables look normal, but on the inside, they possess a computer that a cybercriminal can program to attack whatever the cable is plugged in to. Ways to prevent these attacks include not using random cables, ensuring that every cable you use is purchased from an unopened and secured box, and ensuring that any installed cables are installed by a trustworthy person.</p><div class="detail-cols"><div class="detail-col"><h4>Common Indicators</h4><ul><li>Unknown USB cables offered by strangers or found in public</li><li>Unexpected process launches after connecting a cable</li><li>Anomalous traffic on USB tethering interfaces</li></ul></div><div class="detail-col"><h4>Mitigations</h4><ul><li>Only use cables purchased from trusted retailers yourself</li><li>Use USB data blockers at public charging ports</li><li>Disable USB HID on managed endpoints</li></ul></div></div></div></div>
+
+  <div class="attack-detail" id="WA"><div class="detail-header"><div class="detail-num">03</div><div><div class="detail-title">WiFi Attacks</div></div><div class="detail-cat">Network / Wireless</div></div><div class="detail-body"><p>Wi-Fi attacks are ways hackers target wireless networks. A common one is the "evil twin" attack, where a hacker sets up a fake hotspot that looks like a real one — when you connect, they can spy on everything you send and receive. Hackers can also capture the "handshake" that happens when your device joins a network and use it to crack your Wi-Fi password offline using tools that guess thousands of combinations. Another trick is forcibly disconnecting devices from a network, often to push them onto a fake one. More advanced attacks can even attempt to crack passwords without anyone being connected at all. On top of that, hackers can flood a router with fake requests to slow it down or knock everyone offline entirely. The newer WPA3 security standard was built to fix many of these weaknesses, and understanding how these attacks work is key to building safer networks.</p><div class="detail-cols"><div class="detail-col"><h4>Common Indicators</h4><ul><li>Duplicate SSIDs with weaker security in familiar areas</li><li>Devices auto-connecting to unfamiliar networks</li><li>SSL certificate warnings on normally trusted sites</li></ul></div><div class="detail-col"><h4>Mitigations</h4><ul><li>Always use a VPN on public or untrusted WiFi</li><li>Enable "ask to join" rather than auto-connect</li><li>Upgrade to WPA3 and disable WPS on all routers</li></ul></div></div></div></div>
+
+  <div class="attack-detail" id="MITM"><div class="detail-header"><div class="detail-num">04</div><div><div class="detail-title">Man-in-the-Middle</div></div><div class="detail-cat">Network Interception</div></div><div class="detail-body"><p>A man-in-the-middle (MITM) attack is when a hacker secretly inserts themselves between you and something you're communicating with — like a website — so they can read or even alter the data passing between you without either side knowing. A common way this is done on local networks is by tricking devices into sending their traffic through the hacker's machine instead of the real destination. Once in position, the attacker can do things like downgrade your secure HTTPS connection to unencrypted HTTP to read your data, steal login cookies to impersonate you on websites, or redirect you to a fake version of a site to steal your credentials. Defending against this mainly comes down to encryption — HTTPS and TLS make these attacks much harder — along with tools like VPNs on public Wi-Fi and paying attention to browser security warnings. Security researchers use tools like Bettercap and Mitmproxy to safely simulate these attacks and study how to stop them.</p><div class="detail-cols"><div class="detail-col"><h4>Common Indicators</h4><ul><li>SSL certificate warnings on familiar websites</li><li>Unexpected certificate issuers visible in browser details</li><li>Notably slower local network performance</li></ul></div><div class="detail-col"><h4>Mitigations</h4><ul><li>Enable HSTS and HSTS preloading on sites you control</li><li>Use certificate pinning in mobile applications</li><li>VPN on all untrusted networks; monitor ARP tables</li></ul></div></div></div></div>
+
+  <div class="attack-detail" id="EP"><div class="detail-header"><div class="detail-num">05</div><div><div class="detail-title">Evil Portal</div></div><div class="detail-cat">Credential Harvesting</div></div><div class="detail-body"><p>A fake Wi-Fi hotspot, called an "evil portal," is when a hacker sets up a phony network that looks just like a real one — like the Wi-Fi at a coffee shop or airport — to trick you into connecting to it. Once you do, they can spy on everything you're doing online, steal your passwords, and even show you fake websites to get your personal info. To stay safe, always double-check the Wi-Fi name with staff before connecting, use a VPN, make sure websites show "HTTPS," and turn off auto-connect on your phone or laptop so it doesn't join random networks on its own.</p><div class="detail-cols"><div class="detail-col"><h4>Common Indicators</h4><ul><li>Captive portal on a network that shouldn't require login</li><li>Wrong logo, unusual URL, or no HTTPS lock icon</li><li>Asked for work or social credentials to access WiFi</li></ul></div><div class="detail-col"><h4>Mitigations</h4><ul><li>Verify the official SSID with staff before connecting</li><li>Never enter work credentials into a captive portal page</li><li>Use a VPN to encrypt traffic regardless of the network</li></ul></div></div></div></div>
+
+  <div class="attack-detail" id="DA"><div class="detail-header"><div class="detail-num">06</div><div><div class="detail-title">Deauth Attack</div></div><div class="detail-cat">Denial of Service</div></div><div class="detail-body"><p>A deauthentication attack is a type of denial-of-service (DoS) attack targeting Wi-Fi networks, where an attacker sends forged deauth frames to force a device to disconnect from a wireless access point. This exploits the 802.11 Wi-Fi protocol, which originally had no requirement to authenticate these management frames. Attackers use tools like aireplay-ng to execute this, often as a precursor to a more serious attack, such as capturing the WPA handshake when the victim reconnects, which can then be used in offline password cracking. The vulnerability is largely mitigated by the 802.11w standard (Management Frame Protection), though not all devices and networks have it enabled.​​​​​​​​​​​​​​​​</p><div class="detail-cols"><div class="detail-col"><h4>Common Indicators</h4><ul><li>Repeated, sudden disconnections from a WiFi network</li><li>All devices on the same network dropping simultaneously</li><li>Disconnections that stop when you move location</li></ul></div><div class="detail-col"><h4>Mitigations</h4><ul><li>Use WPA3 — it requires Management Frame Protection (MFP)</li><li>Deploy WIPS on enterprise wireless networks</li><li>Avoid sensitive tasks on public WiFi environments</li></ul></div></div></div></div>
+
+  <div class="attack-detail" id="FS"><div class="detail-header"><div class="detail-num">07</div><div><div class="detail-title">Fishy Software</div></div><div class="detail-cat">Malware</div></div><div class="detail-body"><p>"Fishy" software is any app or download that seems sketchy or comes from a source you can't trust. It usually sneaks onto your device through shady links, pirated software sites, fake app updates, or by quietly bundling itself with something else you installed. Once it's on your device, it can do serious damage — stealing your passwords, spying through your camera, locking your files for ransom, or leaking your personal info, all while running silently in the background. Watch out for warning signs like your browser suddenly changing, your device slowing down for no reason, or apps asking for way more access than they should need. To stay safe, only download software from official stores or websites, keep your device updated, use antivirus software, and if something ever feels off about a download — just don't do it.</p><div class="detail-cols"><div class="detail-col"><h4>Common Indicators</h4><ul><li>Antivirus alerts during or after installation</li><li>Unexpected background processes or network connections</li><li>Applications requesting excessive or unusual permissions</li></ul></div><div class="detail-col"><h4>Mitigations</h4><ul><li>Only install software from official stores or verified publishers</li><li>Review permissions carefully before granting access</li><li>Keep all software updated; use endpoint protection</li></ul></div></div></div></div>
+
+  <div class="attack-detail" id="SE"><div class="detail-header"><div class="detail-num">08</div><div><div class="detail-title">Social Engineering</div></div><div class="detail-cat">Human Factor</div></div><div class="detail-body"><p>Social engineering is a cyberattack technique that manipulates people rather than systems, exploiting human psychology to trick individuals into revealing sensitive information or taking actions that compromise security. Common tactics include phishing emails, pretexting (fabricating a scenario to gain trust), baiting (offering something enticing like a free USB drive), and impersonation. Because it targets human behavior rather than technical vulnerabilities, it’s one of the most effective and difficult-to-defend-against attack vectors, even organizations with strong technical security can be breached through a single deceived employee.</p><div class="detail-cols"><div class="detail-col"><h4>Common Indicators</h4><ul><li>Unsolicited urgent requests for credentials or transfers</li><li>Callers who know just enough to seem legitimate</li><li>Requests to bypass security procedures "just this once"</li></ul></div><div class="detail-col"><h4>Mitigations</h4><ul><li>Verify identity through a known separate channel first</li><li>Run regular phishing simulation training for all staff</li><li>Create culture and policies where saying no is safe</li></ul></div></div></div></div>
+
+  <div class="attack-detail" id="KL"><div class="detail-header"><div class="detail-num">09</div><div><div class="detail-title">Key Logger</div></div><div class="detail-cat">Surveillance / Exfiltration</div></div><div class="detail-body"><p>Keylogging, or keystroke logging, is a technique used to record the keys a user presses, often without their knowledge. It can be deployed through software such as malicious downloads, phishing emails, or infected applications, or through hardware devices attached to or embedded within keyboards. Once installed, keyloggers capture sensitive information like passwords and financial data and transmit it to an attacker. They often operate as part of larger malware systems, interacting with tools like spyware or remote access software to expand surveillance and data theft capabilities. Because of their stealth and effectiveness, keyloggers are widely used in cyberattacks involving identity theft, fraud, and unauthorized system access.</p><div class="detail-cols"><div class="detail-col"><h4>Common Indicators</h4><ul><li>Unknown device plugged between keyboard and computer port</li><li>Accounts accessed that you haven't recently logged into</li><li>Unexpected processes in Task Manager or Activity Monitor</li></ul></div><div class="detail-col"><h4>Mitigations</h4><ul><li>Physically inspect keyboard connections in shared spaces</li><li>Use password managers — keyloggers can't capture autofill</li><li>Enable MFA to limit damage from any captured passwords</li></ul></div></div></div></div>
+
+</main>
+<footer class="site-footer"><div class="footer-inner">
+  <span class="footer-text">© 2026 CyberThreats — Educational purposes only</span>
+  <a href="index.html" class="btn-back">← Home</a>
+</div></footer>
+<script>
+(function(){
+  if(!window.IntersectionObserver)return;
+  var obs=new IntersectionObserver(function(e){
+    e.forEach(function(el){if(el.isIntersecting){el.target.style.opacity='1';el.target.style.transform='none';}});
+  },{threshold:0.05});
+  document.querySelectorAll('.history-entry,.attack-card,.device-item,.tier-row,.attack-detail').forEach(function(el){
+    el.style.opacity='0';el.style.transform='translateY(12px)';
+    el.style.transition='opacity 0.45s ease,transform 0.45s ease';
+    obs.observe(el);
+  });
+})();
+</script></body></html>

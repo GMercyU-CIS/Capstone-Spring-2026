@@ -1,0 +1,310 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Devices — CyberThreats</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inconsolata:wght@300;400;500&display=swap');
+:root{
+  --bg:#0e0e0e;
+  --surface:#161616;
+  --surface2:#1e1e1e;
+  --border:#2a2a2a;
+  --text:#e8e8e8;
+  --muted:#6b6b6b;
+  --soft:#9a9a9a;
+  --red:#e8392a;
+  --red-dim:#7a1a10;
+  --red-glow:rgba(232,57,42,0.12);
+  --white:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inconsolata',monospace;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;overflow-x:hidden;font-size:15px}
+
+/* HEADER */
+.site-header{background:var(--bg);border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:100}
+.header-inner{max-width:1080px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;letter-spacing:0.04em;text-decoration:none;color:var(--white);display:flex;align-items:center;gap:10px}
+.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;flex-shrink:0}
+nav{display:flex;gap:2px}
+nav a{font-family:'Inconsolata',monospace;font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:6px 14px;border-radius:2px;transition:color 0.18s,background 0.18s}
+nav a:hover{color:var(--text);background:var(--surface)}
+nav a.active{color:var(--white);background:var(--surface2)}
+
+/* CONTAINER */
+.container{max-width:1080px;margin:0 auto;padding:0 32px}
+
+/* HERO */
+.hero{padding:72px 0 48px;border-bottom:1px solid var(--border);margin-bottom:56px}
+.hero-tag{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--red);display:inline-block}
+.hero h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.2rem,5vw,4rem);color:var(--white);line-height:1.08;letter-spacing:-0.02em;margin-bottom:20px}
+.hero h2 em{font-style:normal;color:var(--red)}
+.hero p{color:var(--soft);font-size:0.95rem;max-width:520px;line-height:1.85}
+
+/* SECTION HEADING */
+.section-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
+.section-head h3{font-family:'Syne',sans-serif;font-weight:700;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+.section-head::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* HISTORY ENTRIES */
+.history-entry{display:grid;grid-template-columns:140px 1fr;gap:32px;padding:36px 0;border-bottom:1px solid var(--border)}
+.he-era{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);padding-top:4px}
+.he-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;color:var(--white);margin-bottom:12px;letter-spacing:-0.01em}
+.he-body{color:var(--soft);font-size:0.9rem;line-height:1.85}
+.he-image{width:100%;margin:20px 0 0;border:1px solid var(--border);display:block;filter:brightness(0.65) contrast(1.1)}
+
+/* ATTACK GRID */
+.attack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:56px}
+.attack-card{background:var(--bg);padding:28px 24px;transition:background 0.18s;text-decoration:none;display:block;position:relative}
+.attack-card:hover{background:var(--surface)}
+.ac-index{font-size:0.68rem;letter-spacing:0.1em;color:var(--muted);margin-bottom:12px;display:block}
+.ac-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;color:var(--white);margin-bottom:8px;letter-spacing:-0.01em}
+.ac-desc{font-size:0.82rem;color:var(--soft);line-height:1.65}
+.ac-arrow{position:absolute;bottom:20px;right:20px;color:var(--red);font-size:0.9rem;opacity:0;transform:translateX(-6px);transition:all 0.2s}
+.attack-card:hover .ac-arrow{opacity:1;transform:none}
+.attack-card.span2{grid-column:span 2}
+
+/* DETAIL SECTIONS */
+.attack-detail{border-top:1px solid var(--border);padding:40px 0;scroll-margin-top:80px}
+.detail-header{display:grid;grid-template-columns:48px 1fr auto;gap:20px;align-items:start;margin-bottom:24px}
+.detail-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--border);line-height:1}
+.detail-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.4rem;color:var(--white);letter-spacing:-0.01em}
+.detail-cat{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);border:1px solid var(--red-dim);padding:4px 10px;white-space:nowrap;margin-top:6px}
+.detail-body p{color:var(--soft);font-size:0.9rem;line-height:1.85;margin-bottom:20px}
+.detail-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:8px}
+.detail-col h4{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.detail-col ul{list-style:none;padding:0}
+.detail-col ul li{color:var(--soft);font-size:0.85rem;padding:6px 0 6px 16px;position:relative;line-height:1.55;border-bottom:1px solid rgba(255,255,255,0.03)}
+.detail-col ul li::before{content:'—';position:absolute;left:0;color:var(--red);font-size:0.7rem;top:8px}
+
+/* DEVICE CARDS */
+.device-list{display:flex;flex-direction:column;gap:1px;background:var(--border);margin-bottom:56px}
+.device-item{background:var(--bg);padding:32px;display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;transition:background 0.18s}
+.device-item:hover{background:var(--surface)}
+.di-left{}
+.di-icon-name{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.di-icon{font-size:1.5rem;line-height:1}
+.di-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;color:var(--white);letter-spacing:-0.01em}
+.di-tag{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;padding-left:0}
+.di-desc{color:var(--soft);font-size:0.88rem;line-height:1.82}
+.di-right{}
+.di-attacks-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.di-pills{display:flex;flex-direction:column;gap:6px}
+.di-pill{font-size:0.76rem;color:var(--soft);padding:7px 12px;border:1px solid var(--border);background:var(--surface);letter-spacing:0.02em;transition:border-color 0.18s,color 0.18s}
+.device-item:hover .di-pill{border-color:var(--red-dim);color:var(--text)}
+.di-video{margin-top:20px;border-top:1px solid var(--border);padding-top:16px}
+.di-video-label{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.di-video-box{border:1px dashed var(--border);padding:20px;text-align:center;color:var(--muted);font-size:0.8rem;display:flex;align-items:center;justify-content:center;gap:10px}
+.di-play{color:var(--red);font-size:1rem}
+
+/* TIER LIST */
+.protect-note{padding:28px 32px;background:var(--surface);border-left:3px solid var(--red);margin-bottom:48px}
+.protect-note p{color:var(--soft);font-size:0.9rem;line-height:1.85}
+.tier-row{display:grid;grid-template-columns:120px 1fr;gap:0;margin-bottom:1px;background:var(--border)}
+.tier-label{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 12px;background:var(--surface);text-align:center;gap:4px}
+.tier-label .tl-rank{font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;line-height:1}
+.tier-label .tl-name{font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+.tier-t1 .tl-rank{color:#4ade80}.tier-t2 .tl-rank{color:#a3e635}.tier-t3 .tl-rank{color:#facc15}.tier-t4 .tl-rank{color:#fb923c}.tier-t5 .tl-rank{color:var(--red)}
+.tier-items{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--border)}
+.tier-item{background:var(--bg);padding:18px 20px;transition:background 0.15s}
+.tier-item:hover{background:var(--surface)}
+.ti-name{font-family:'Syne',sans-serif;font-weight:600;font-size:0.82rem;color:var(--text);margin-bottom:5px;letter-spacing:0.01em}
+.ti-desc{font-size:0.78rem;color:var(--muted);line-height:1.55}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(--border);padding:32px 0;margin-top:80px}
+.footer-inner{max-width:1080px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+.footer-text{font-size:0.75rem;color:var(--muted);letter-spacing:0.06em}
+.btn-back{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.18s}
+.btn-back:hover{color:var(--white)}
+
+/* FADE IN */
+.fade{opacity:0;transform:translateY(12px);animation:fi 0.5s ease forwards}
+@keyframes fi{to{opacity:1;transform:none}}
+.fade:nth-child(1){animation-delay:.04s}.fade:nth-child(2){animation-delay:.1s}.fade:nth-child(3){animation-delay:.16s}.fade:nth-child(4){animation-delay:.22s}.fade:nth-child(5){animation-delay:.28s}.fade:nth-child(6){animation-delay:.34s}.fade:nth-child(7){animation-delay:.40s}.fade:nth-child(8){animation-delay:.46s}.fade:nth-child(9){animation-delay:.52s}
+
+@media(max-width:800px){
+  .header-inner{flex-wrap:wrap;gap:10px;padding:14px 20px}
+  nav{flex-wrap:wrap}
+  .container{padding:0 20px}
+  .attack-grid{grid-template-columns:1fr 1fr}
+  .attack-card.span2{grid-column:1}
+  .device-item{grid-template-columns:1fr}
+  .tier-row{grid-template-columns:80px 1fr}
+  .detail-cols{grid-template-columns:1fr}
+  .history-entry{grid-template-columns:1fr}
+  .he-era{margin-bottom:8px}
+  .hero h2{font-size:2rem}
+  .footer-inner{flex-direction:column;gap:12px;text-align:center}
+}
+@media(max-width:500px){.attack-grid{grid-template-columns:1fr}}
+</style></head><body>
+<header class="site-header"><div class="header-inner">
+  <a href="index.html" class="logo"><span class="logo-dot"></span>CyberThreats</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="toa.html">Attacks</a>
+    <a href="devices.html" class="active">Devices</a>
+    <a href="protect.html">Protection</a>
+  </nav>
+</div></header>
+
+<main class="container">
+  <section class="hero fade">
+    <div class="hero-tag">Hardware Catalog — 6 Devices</div>
+    <h2>Hacking<br><em>Devices</em></h2>
+    <p>Purpose-built tools used by security researchers and threat actors alike. Understanding the hardware is the first step to defending against it.</p>
+  </section>
+
+  <div class="section-head"><h3>Active Units</h3></div>
+  <div class="device-list">
+
+  <div class="device-item">
+      <div class="di-left">
+        <div class="di-icon-name"><span class="di-icon">📡</span><div class="di-name">WiFi Pineapple</div></div>
+        <div class="di-tag">Hak5 / Wireless Auditing Platform</div>
+        <p class="di-desc">A purpose-built wireless auditing platform that masquerades as a legitimate access point. It responds to probe requests from nearby devices, luring them to auto-connect. Once connected, it intercepts traffic, serves evil portals, captures credentials, and runs MITM attacks — all via a polished web dashboard. The Mark VII fits in a backpack and targets dozens of devices simultaneously with no technical expertise required.</p>
+      </div>
+      <div class="di-right">
+        <div class="di-attacks-label">Associated attack types</div>
+        <div class="di-pills">
+          <div class="di-pill">WiFi Attacks</div>
+          <div class="di-pill">Man-in-the-Middle</div>
+          <div class="di-pill">Evil Portal</div>
+          <div class="di-pill">Deauth Attack</div>
+        </div>
+      </div>
+      <div class="di-video">
+      <div class="di-video-label">Device Photo</div>
+      <div class="di-video-box" style="padding:0;border-style:solid;">
+        <img src="pineapple.jpeg" alt="shark" style="width:100%;display:block;filter:brightness(0.75) contrast(1.1);" height="300">
+      </div>
+    </div>
+    </div>
+
+
+    <div class="device-item">
+      <div class="di-left">
+        <div class="di-icon-name"><span class="di-icon">🦈</span><div class="di-name">Shark Jack</div></div>
+        <div class="di-tag">Hak5 / Ethernet Implant</div>
+        <p class="di-desc">A compact, battery-powered network attack tool disguised as an Ethernet adapter. Plug it into a live network port and it immediately executes payloads — scanning, fingerprinting, and exfiltrating network intelligence within seconds. Its companion, the LAN Turtle, installs as a transparent USB Ethernet adapter enabling persistent remote access via SSH or reverse tunnels, punching silently through firewalls.</p>
+      </div>
+      <div class="di-right">
+        <div class="di-attacks-label">Associated attack types</div>
+        <div class="di-pills">
+          <div class="di-pill">Man-in-the-Middle</div>
+          <div class="di-pill">Fishy Software</div>
+          <div class="di-pill">Key Logger</div>
+        </div>
+      </div>
+      <div class="di-right">
+    <div class="di-video">
+      <div class="di-video-label">Device Photo</div>
+      <div class="di-video-box" style="padding:0;border-style:solid;">
+        <img src="wire shark.jpeg" alt="shark" style="width:100%;display:block;filter:brightness(0.75) contrast(1.1);" height="360">
+      </div>
+    </div>
+  </div>
+    </div>
+
+    <div class="device-item">
+      <div class="di-left">
+        <div class="di-icon-name"><span class="di-icon">🔌</span><div class="di-name">O.MG Cable</div></div>
+        <div class="di-tag">Covert Hardware / HID Implant</div>
+        <p class="di-desc">Visually and functionally identical to a standard USB cable — down to the moulding and weight. Hidden inside is a full WiFi-capable implant and microcontroller. When plugged in, it injects keystrokes, runs scripts, exfiltrates data over WiFi, self-destructs its payload to defeat forensic analysis, and maintains a persistent backdoor. It bypasses OS-level USB security by presenting as a legitimate HID keyboard.</p>
+        <div class="di-video">
+          <div class="di-video-label">Demo Video</div>
+          <div class="di-video-box"><span class="di-play">▶</span> <video width="500" height="360" controls>
+          <source src="IMG_0488.MOV" type="video/mp4"></video>
+        </div>
+        </div>
+      </div>
+      <div class="di-right">
+        <div class="di-attacks-label">Associated attack types</div>
+        <div class="di-pills">
+          <div class="di-pill">Covert Cables</div>
+          <div class="di-pill">Key Logger</div>
+          <div class="di-pill">Fishy Software</div>
+          <div class="di-pill">Social Engineering</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="device-item">
+      <div class="di-left">
+        <div class="di-icon-name"><span class="di-icon">🦆</span><div class="di-name">USB Rubber Ducky</div></div>
+        <div class="di-tag">Hak5 / Keystroke Injection</div>
+        <p class="di-desc">The device that pioneered keystroke injection attacks. It presents as a trusted USB keyboard, bypassing every security tool that blocks unknown USB storage. In seconds it types hundreds of commands — opening terminals, downloading malware, exfiltrating data, creating backdoor accounts, or disabling security software. Ducky 3.0 includes conditional logic so payloads adapt to the detected OS and environment automatically.</p>
+        <div class="di-video">
+          <div class="di-video-label">Demo Video</div>
+          <div class="di-video-box"><span class="di-play">▶</span> <video width="500" height="360" controls>
+          <source src="IMG_0486.MOV" type="video/mp4"></video></div>
+        </div>
+      </div>
+      <div class="di-right">
+        <div class="di-attacks-label">Associated attack types</div>
+        <div class="di-pills">
+          <div class="di-pill">Key Logger</div>
+          <div class="di-pill">Fishy Software</div>
+          <div class="di-pill">Covert Cables</div>
+          <div class="di-pill">Social Engineering</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="device-item">
+      <div class="di-left">
+        <div class="di-icon-name"><span class="di-icon">🗺️</span><div class="di-name">Nmap</div></div>
+        <div class="di-tag">Software / Network Scanner</div>
+        <p class="di-desc">The industry-standard open-source tool for network discovery and security auditing. Uses raw IP packets to determine what hosts exist, what services they run, what OS they use, and what firewalls are in place. While administrators use it daily for legitimate audits, attackers use it in reconnaissance — quietly mapping a target network before exploitation. Advanced scan types can evade basic intrusion detection entirely.</p>
+      </div>
+      <div class="di-right">
+        <div class="di-attacks-label">Associated attack types</div>
+        <div class="di-pills">
+          <div class="di-pill">Man-in-the-Middle</div>
+          <div class="di-pill">WiFi Attacks</div>
+          <div class="di-pill">Fishy Software</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="device-item">
+      <div class="di-left">
+        <div class="di-icon-name"><span class="di-icon">🐬</span><div class="di-name">Flipper Zero</div></div>
+        <div class="di-tag">Multi-Tool / RF, NFC & HID</div>
+        <p class="di-desc">A portable multi-tool for hardware hacking packaged in a playful dolphin-themed device. Reads, clones, and replays RFID cards (including building access badges), NFC tags, IR remotes, and sub-GHz radio signals. GPIO pins allow direct hardware interfacing. BadUSB mode functions like a Rubber Ducky. Received major media attention for interacting with everything from garage doors to contactless payment terminals, sparking legislative discussions in multiple countries.</p>
+      </div>
+      <div class="di-right">
+        <div class="di-attacks-label">Associated attack types</div>
+        <div class="di-pills">
+          <div class="di-pill">Covert Cables</div>
+          <div class="di-pill">Social Engineering</div>
+          <div class="di-pill">Key Logger</div>
+          <div class="di-pill">WiFi Attacks</div>
+        </div>
+      </div>
+      <div class="di-video">
+      <div class="di-video-label">Device Photo</div>
+      <div class="di-video-box" style="padding:0;border-style:solid;">
+        <img src="flipper.jpeg" alt="flipper" style="width:100%;display:block;filter:brightness(0.75) contrast(1.1);transform: rotate(180deg);" height="360">
+      </div>
+    </div>
+    </div>
+
+  </div>
+</main>
+<footer class="site-footer"><div class="footer-inner">
+  <span class="footer-text">© 2026 CyberThreats — Educational purposes only</span>
+  <a href="index.html" class="btn-back">← Home</a>
+</div></footer>
+<script>
+(function(){
+  if(!window.IntersectionObserver)return;
+  var obs=new IntersectionObserver(function(e){
+    e.forEach(function(el){if(el.isIntersecting){el.target.style.opacity='1';el.target.style.transform='none';}});
+  },{threshold:0.05});
+  document.querySelectorAll('.history-entry,.attack-card,.device-item,.tier-row,.attack-detail').forEach(function(el){
+    el.style.opacity='0';el.style.transform='translateY(12px)';
+    el.style.transition='opacity 0.45s ease,transform 0.45s ease';
+    obs.observe(el);
+  });
+})();
+</script></body></html>
